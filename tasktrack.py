@@ -24,8 +24,16 @@ def add_task(tasks):
 
 def view_tasks(tasks):
     """Display all tasks currently stored in the task list."""
-    #TODO: Complete this function in Step 9.
-    pass
+    def view_tasks(tasks):
+     """Display all tasks currently stored in the task list."""
+    if not tasks:
+        #TODO: Display the empty-list message.
+        return
+
+    print("\nTasks:")
+
+    #TODO: Loop through enumerate(tasks, start=1).
+    #TODO: Display each number and task using an f-string.
 
 
 def main():
