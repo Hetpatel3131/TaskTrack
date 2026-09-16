@@ -1,2 +1,1 @@
-# TaskTrack
-Task track is a command line task manager created for CPS 310.
+TaskTrack is a command-line task manager created for CPS 310.
