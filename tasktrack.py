@@ -4,37 +4,28 @@ Author: Het Patel
 Course: CPS 310
 """
 
-
 def display_menu():
     """Display the available TaskTrack menu options."""
-    print("\nTaskTrack")
+    print("\nTaskTrack Menu")
     print("1. View tasks")
     print("2. Add task")
     print("3. Exit")
 
-
 def add_task(tasks):
     """Prompt the user for a task and add it to the task list."""
-    def add_task(tasks):
-     """Prompt the user for a task and add it to the task list."""
     task = input("Enter a new task: ")
-    #TODO: Use append() to add task to the tasks list.
-    #TODO: Print "Task added successfully."
-
+    tasks.append(task)
+    print("Task added successfully.")
 
 def view_tasks(tasks):
     """Display all tasks currently stored in the task list."""
-    def view_tasks(tasks):
-     """Display all tasks currently stored in the task list."""
     if not tasks:
-        #TODO: Display the empty-list message.
+        print("No tasks found.")
         return
 
     print("\nTasks:")
-
-    #TODO: Loop through enumerate(tasks, start=1).
-    #TODO: Display each number and task using an f-string.
-
+    for number, task in enumerate(tasks, start=1):
+        print(f"{number}. {task}")
 
 def main():
     """Run the TaskTrack menu until the user chooses to exit."""
@@ -53,7 +44,6 @@ def main():
             break
         else:
             print("Please enter 1, 2, or 3.")
-
 
 if __name__ == "__main__":
     main()
