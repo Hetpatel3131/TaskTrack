@@ -4,12 +4,31 @@ Author: Het Patel
 Course: CPS 310
 """
 
+TASKS_FILE = "tasks.txt"
+
 def display_menu():
     """Display the available TaskTrack menu options."""
     print("\nTaskTrack Menu Updated")
     print("1. View tasks")
     print("2. Add task")
     print("3. Exit")
+
+def load_tasks(filename):
+    """Load tasks from a text file and return them as a list."""
+    tasks = []
+
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                task = line.strip()
+
+                #TODO: Ignore blank lines.
+                #TODO: Add each non-empty task to the tasks list.
+    except FileNotFoundError:
+        # A new project may not have a task file yet.
+        return []
+
+    return tasks
 
 def add_task(tasks):
     """Prompt the user for a task and add it to the task list."""
@@ -29,7 +48,8 @@ def view_tasks(tasks):
 
 def main():
     """Run the TaskTrack menu until the user chooses to exit."""
-    tasks = []
+
+    tasks = load_tasks(TASKS_FILE)
 
     while True:
         display_menu()
