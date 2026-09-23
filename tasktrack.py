@@ -6,6 +6,7 @@ Course: CPS 310
 
 TASKS_FILE = "tasks.txt"
 
+
 def display_menu():
     """Display the available TaskTrack menu options."""
     print("\nTaskTrack Menu Updated")
@@ -22,19 +23,33 @@ def load_tasks(filename):
             for line in file:
                 task = line.strip()
 
-                #TODO: Ignore blank lines.
-                #TODO: Add each non-empty task to the tasks list.
+                # Ignore blank lines and add non-empty tasks
+                if task:
+                    tasks.append(task)
     except FileNotFoundError:
         # A new project may not have a task file yet.
         return []
 
     return tasks
 
+def save_tasks(tasks, filename):
+    """Save all tasks to a text file."""
+    with open(filename, "w") as file:
+        for task in tasks:
+            file.write(f"{task}\n")
+
 def add_task(tasks):
     """Prompt the user for a task and add it to the task list."""
-    task = input("Enter a new task: ")
+    task = input("Enter a new task: ").strip()
+
+    if not task:
+        print("A task cannot be empty.")
+        return
+
+    # Keep your existing append and confirmation code below
     tasks.append(task)
-    print("Task added successfully.")
+    print(f"Task added: {task}")
+
 
 def view_tasks(tasks):
     """Display all tasks currently stored in the task list."""
@@ -59,6 +74,7 @@ def main():
             view_tasks(tasks)
         elif choice == "2":
             add_task(tasks)
+            save_tasks(tasks, TASKS_FILE)
         elif choice == "3":
             print("Goodbye!")
             break
@@ -66,4 +82,4 @@ def main():
             print("Please enter 1, 2, or 3.")
 
 if __name__ == "__main__":
-    main()
+     main()
