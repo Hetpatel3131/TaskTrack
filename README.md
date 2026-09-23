@@ -25,3 +25,6 @@ Open a terminal in the project folder and run the following command:
 
 ```text
 python tasktrack.py
+## Version Control
+
+This project uses Git locally to track changes through a series of focused commits. The repository is connected to a remote repository hosted on GitHub. Code is uploaded using the push command, and updates from the remote repository can be downloaded using the pull command.
