@@ -10,9 +10,11 @@ TASKS_FILE = "tasks.txt"
 def display_menu():
     """Display the available TaskTrack menu options."""
     print("\nTaskTrack Menu Updated")
-    print("1. View tasks")
-    print("2. Add task")
-    print("3. Exit")
+    print("1. View Tasks")
+    print("2. Add Task")
+    print("3. Remove Task")
+    print("4. Exit")
+
 
 def load_tasks(filename):
     """Load tasks from a text file and return them as a list."""
@@ -32,11 +34,13 @@ def load_tasks(filename):
 
     return tasks
 
+
 def save_tasks(tasks, filename):
     """Save all tasks to a text file."""
     with open(filename, "w") as file:
         for task in tasks:
             file.write(f"{task}\n")
+
 
 def add_task(tasks):
     """Prompt the user for a task and add it to the task list."""
@@ -91,6 +95,7 @@ def remove_task(tasks):
 
     return True
 
+
 def main():
     """Run the TaskTrack menu until the user chooses to exit."""
 
@@ -113,6 +118,7 @@ def main():
             break
         else:
             print("Invalid choice. Please select a valid option.")
+
 
 if __name__ == "__main__":
      main()
