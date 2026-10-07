@@ -61,6 +61,36 @@ def view_tasks(tasks):
     for number, task in enumerate(tasks, start=1):
         print(f"{number}. {task}")
 
+
+def remove_task(tasks):
+    """Prompt the user to select and remove a task.
+
+    Return True when a task is removed and False otherwise.
+    """
+    if not tasks:
+        print("No tasks are available to remove.")
+        return False
+
+    view_tasks(tasks)
+    selection = input("Enter the number of the task to remove: ").strip()
+
+    if not selection.isdigit():
+        print("Please enter a valid task number.")
+        return False
+
+    task_number = int(selection)
+
+    if task_number < 1 or task_number > len(tasks):
+        print("That task number does not exist.")
+        return False
+
+    # Subtract 1 because displayed numbers start at 1, but Python lists start at 0
+    removed_task = tasks.pop(task_number - 1)
+
+    print(f"Task removed: {removed_task}")
+
+    return True
+
 def main():
     """Run the TaskTrack menu until the user chooses to exit."""
 
@@ -76,10 +106,13 @@ def main():
             add_task(tasks)
             save_tasks(tasks, TASKS_FILE)
         elif choice == "3":
-            print("Goodbye!")
+            if remove_task(tasks):
+                save_tasks(tasks, TASKS_FILE)
+        elif choice == "4":
+            print("Exiting TaskTrack. Goodbye!")
             break
         else:
-            print("Please enter 1, 2, or 3.")
+            print("Invalid choice. Please select a valid option.")
 
 if __name__ == "__main__":
      main()
